@@ -18,8 +18,8 @@ Example:
 [This comment was automatically created with https://github.com/brackendev/OpenAI-Pharo]
 "
 Class {
-	#name : #OpenAISDKModel,
-	#superclass : #Object,
+	#name : 'OpenAISDKModel',
+	#superclass : 'Object',
 	#instVars : [
 		'ownedBy',
 		'parent',
@@ -29,10 +29,12 @@ Class {
 		'object',
 		'id'
 	],
-	#category : #'OpenAI-Model'
+	#category : 'OpenAI-Model',
+	#package : 'OpenAI',
+	#tag : 'Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OpenAISDKModel class >> createWithAPIResponse: aResponse [
 
 	^ self new
@@ -45,85 +47,85 @@ OpenAISDKModel class >> createWithAPIResponse: aResponse [
 		  id: (aResponse at: 'id')
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModel >> created [
 
 	^ created
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModel >> created: anObject [
 
 	created := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModel >> id [
 
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModel >> id: anObject [
 
 	id := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModel >> object [
 
 	^ object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModel >> object: anObject [
 
 	object := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModel >> ownedBy [
 
 	^ ownedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModel >> ownedBy: anObject [
 
 	ownedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModel >> parent [
 
 	^ parent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModel >> parent: anObject [
 
 	parent := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModel >> permission [
 
 	^ permission
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModel >> permission: anObject [
 
 	permission := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModel >> root [
 
 	^ root
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModel >> root: anObject [
 
 	root := anObject

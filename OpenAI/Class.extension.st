@@ -1,6 +1,6 @@
-Extension { #name : #Class }
+Extension { #name : 'Class' }
 
-{ #category : #'*OpenAI' }
+{ #category : '*OpenAI' }
 Class >> classResponsibilityCollaboratorWithSDK: anOpenAISDK [
 
 	| chat |
@@ -36,7 +36,7 @@ Class >> classResponsibilityCollaboratorWithSDK: anOpenAISDK [
 		]
 ]
 
-{ #category : #'*OpenAI' }
+{ #category : '*OpenAI' }
 Class >> definitionAndSourceCode [
 
 	| classSourceStream |
@@ -46,7 +46,7 @@ Class >> definitionAndSourceCode [
 	^ classSourceStream contents
 ]
 
-{ #category : #'*OpenAI' }
+{ #category : '*OpenAI' }
 Class >> updateCommentWithOpenAICRCWithSDK: anOpenAISDK [
 
 	| crc |

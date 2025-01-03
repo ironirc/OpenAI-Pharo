@@ -1,6 +1,6 @@
-Extension { #name : #ImageMorph }
+Extension { #name : 'ImageMorph' }
 
-{ #category : #'*OpenAI' }
+{ #category : '*OpenAI' }
 ImageMorph >> outputPNGFile: aFileNameString [
 
 	| form pngWriter pngStream |

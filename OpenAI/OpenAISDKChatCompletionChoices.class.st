@@ -18,60 +18,72 @@ Example:
 [This comment was automatically created with https://github.com/brackendev/OpenAI-Pharo]
 "
 Class {
-	#name : #OpenAISDKChatCompletionChoices,
-	#superclass : #Object,
+	#name : 'OpenAISDKChatCompletionChoices',
+	#superclass : 'Object',
 	#instVars : [
 		'index',
 		'message',
 		'finishReason'
 	],
-	#category : #'OpenAI-Model'
+	#category : 'OpenAI-Model',
+	#package : 'OpenAI',
+	#tag : 'Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OpenAISDKChatCompletionChoices class >> createWithAPIResponse: aResponse [
 
 	| message |
 	message := aResponse at: 'message'.
 	^ self new
 		  index: (aResponse at: 'index');
-		  message: (OpenAISDKChat
-				   createWithRole: (message at: 'role')
-				   content: (message at: 'content'));
+		  message: (self newMessageFromResponse: aResponse);
 		  finishReason: (aResponse at: 'finish_reason')
 ]
 
-{ #category : #accessing }
+{ #category : 'instance creation' }
+OpenAISDKChatCompletionChoices class >> newMessageFromResponse: aResponse [
+
+	| message |
+	message := aResponse at: 'message'.
+	(aResponse at: 'finish_reason') = 'function_call' ifTrue: [
+		^ OpenAISDKCompletionMessageFunctionCall newForMessageDict: message ].
+	^ OpenAISDKChat
+		  createWithRole: (message at: 'role')
+		  content: (message at: 'content')
+]
+
+{ #category : 'accessing' }
 OpenAISDKChatCompletionChoices >> finishReason [
 
 	^ finishReason
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletionChoices >> finishReason: anObject [
 
 	finishReason := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletionChoices >> index [
 
 	^ index
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletionChoices >> index: anObject [
 
 	index := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletionChoices >> message [
 
 	^ message
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletionChoices >> message: anObject [
 
 	message := anObject

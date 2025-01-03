@@ -18,20 +18,22 @@ Example:
 [This comment was automatically created with https://github.com/brackendev/OpenAI-Pharo]
 "
 Class {
-	#name : #OpenAISDKException,
-	#superclass : #Exception,
+	#name : 'OpenAISDKException',
+	#superclass : 'Exception',
 	#instVars : [
 		'relatedObject'
 	],
-	#category : #'OpenAI-Model'
+	#category : 'OpenAI-Model',
+	#package : 'OpenAI',
+	#tag : 'Model'
 }
 
-{ #category : #signalling }
+{ #category : 'signalling' }
 OpenAISDKException class >> signalForObject: anObject [
     ^ self new initializeWithObject: anObject; signal
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OpenAISDKException >> initializeWithObject: anObject [
 
 	self initialize.

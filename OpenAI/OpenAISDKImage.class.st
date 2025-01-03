@@ -18,16 +18,18 @@ Example:
 [This comment was automatically created with https://github.com/brackendev/OpenAI-Pharo]
 "
 Class {
-	#name : #OpenAISDKImage,
-	#superclass : #Object,
+	#name : 'OpenAISDKImage',
+	#superclass : 'Object',
 	#instVars : [
 		'created',
 		'data'
 	],
-	#category : #'OpenAI-Model'
+	#category : 'OpenAI-Model',
+	#package : 'OpenAI',
+	#tag : 'Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OpenAISDKImage class >> createWithAPIResponse: aResponse [
 
 	^ self new
@@ -35,31 +37,31 @@ OpenAISDKImage class >> createWithAPIResponse: aResponse [
 		  data: (aResponse at: 'data')
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKImage >> created [
 
 	^ created
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKImage >> created: anObject [
 
 	created := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKImage >> data [
 
 	^ data
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKImage >> data: anObject [
 
 	data := anObject
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 OpenAISDKImage >> images [
 
 	^ self urls collect: [ :e | 
@@ -68,13 +70,13 @@ OpenAISDKImage >> images [
 		  ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 OpenAISDKImage >> urls [
 
 	^ self data collect: [ :e | e at: 'url' ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 OpenAISDKImage >> writeImagesOut [
 
 	self images do: [ :e | e outputPNGFile: (UUID new asString) ]

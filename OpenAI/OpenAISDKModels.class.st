@@ -18,16 +18,18 @@ Example:
 [This comment was automatically created with https://github.com/brackendev/OpenAI-Pharo]
 "
 Class {
-	#name : #OpenAISDKModels,
-	#superclass : #Object,
+	#name : 'OpenAISDKModels',
+	#superclass : 'Object',
 	#instVars : [
 		'object',
 		'data'
 	],
-	#category : #'OpenAI-Model'
+	#category : 'OpenAI-Model',
+	#package : 'OpenAI',
+	#tag : 'Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OpenAISDKModels class >> createWithAPIResponse: aResponse [
 
 	^ self new
@@ -36,31 +38,31 @@ OpenAISDKModels class >> createWithAPIResponse: aResponse [
 					   OpenAISDKModel createWithAPIResponse: e ])
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 OpenAISDKModels >> allModelRoots [
 
 	^ data collect: [ :e | e root ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModels >> data [
 
 	^ data
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModels >> data: anObject [
 
 	data := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModels >> object [
 
 	^ object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKModels >> object: anObject [
 
 	object := anObject

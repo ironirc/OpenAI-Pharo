@@ -1,1 +1,1 @@
-Package { #name : #OpenAI }
+Package { #name : 'OpenAI' }

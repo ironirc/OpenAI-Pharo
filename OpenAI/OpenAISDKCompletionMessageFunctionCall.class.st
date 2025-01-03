@@ -19,11 +19,10 @@ Example:
 [This comment was automatically created with https://github.com/brackendev/OpenAI-Pharo]
 "
 Class {
-	#name : 'OpenAISDKChat',
+	#name : 'OpenAISDKCompletionMessageFunctionCall',
 	#superclass : 'Object',
 	#instVars : [
-		'role',
-		'content'
+		'rawDict'
 	],
 	#category : 'OpenAI-Model',
 	#package : 'OpenAI',
@@ -31,48 +30,45 @@ Class {
 }
 
 { #category : 'instance creation' }
-OpenAISDKChat class >> createWithRole: aRoleString content: aContentString [
+OpenAISDKCompletionMessageFunctionCall class >> newForMessageDict: aDict [
 
 	^ self new
-		  role: aRoleString;
-		  content: aContentString
+		  rawDict: aDict;
+		  yourself
 ]
 
 { #category : 'accessing' }
-OpenAISDKChat >> content [
+OpenAISDKCompletionMessageFunctionCall >> functionArguments [
 
-	^ content
+	^STONJSON fromString:  (rawDict getPath: #( 'function_call' 'arguments' ))
 ]
 
 { #category : 'accessing' }
-OpenAISDKChat >> content: anObject [
+OpenAISDKCompletionMessageFunctionCall >> functionName [
 
-	content := anObject
-]
-
-{ #category : 'public access' }
-OpenAISDKChat >> evaluate [
-
-	[ ^ Smalltalk compiler evaluate: content ]
-		on: Exception
-		do: [ :error | error inspect ]
+	^ rawDict getPath: #('function_call' 'name')
 ]
 
 { #category : 'accessing' }
-OpenAISDKChat >> role [
+OpenAISDKCompletionMessageFunctionCall >> rawDict [
 
-	^ role
+	^ rawDict
 ]
 
 { #category : 'accessing' }
-OpenAISDKChat >> role: anObject [
+OpenAISDKCompletionMessageFunctionCall >> rawDict: anObject [
 
-	role := anObject
+	rawDict := anObject
 ]
 
-{ #category : 'serialization' }
-OpenAISDKChat >> toDictionary [
+{ #category : 'accessing' }
+OpenAISDKCompletionMessageFunctionCall >> role [
 
-	^ {  ('role' -> role).
-		  ('content' -> content) } asDictionary
+	^ rawDict at: 'role'
+]
+
+{ #category : 'as yet unclassified' }
+OpenAISDKCompletionMessageFunctionCall >> toDictionary [
+
+	^ rawDict
 ]

@@ -18,8 +18,8 @@ Example:
 [This comment was automatically created with https://github.com/brackendev/OpenAI-Pharo]
 "
 Class {
-	#name : #OpenAISDKChatCompletion,
-	#superclass : #Object,
+	#name : 'OpenAISDKChatCompletion',
+	#superclass : 'Object',
 	#instVars : [
 		'id',
 		'object',
@@ -28,10 +28,12 @@ Class {
 		'choices',
 		'usage'
 	],
-	#category : #'OpenAI-Model'
+	#category : 'OpenAI-Model',
+	#package : 'OpenAI',
+	#tag : 'Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OpenAISDKChatCompletion class >> createWithAPIResponse: aResponse [
 
 	^ self new
@@ -44,78 +46,78 @@ OpenAISDKChatCompletion class >> createWithAPIResponse: aResponse [
 		  usage: (aResponse at: 'usage')
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletion >> choices [
 
 	^ choices
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletion >> choices: anObject [
 
 	choices := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletion >> created [
 
 	^ created
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletion >> created: anObject [
 
 	created := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletion >> firstChoice [
 ^ (choices at: 1) message content
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletion >> id [
 
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletion >> id: anObject [
 
 	id := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletion >> model [
 
 	^ model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletion >> model: anObject [
 
 	model := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletion >> object [
 
 	^ object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletion >> object: anObject [
 
 	object := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletion >> usage [
 
 	^ usage
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAISDKChatCompletion >> usage: anObject [
 
 	usage := anObject

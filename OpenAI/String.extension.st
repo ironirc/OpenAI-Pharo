@@ -1,13 +1,13 @@
-Extension { #name : #String }
+Extension { #name : 'String' }
 
-{ #category : #'*OpenAI' }
+{ #category : '*OpenAI' }
 String >> imageFromURL [
 
 	^ ImageReadWriter formFromStream:
 		  (ZnEasy get: self) contents readStream
 ]
 
-{ #category : #'*OpenAI' }
+{ #category : '*OpenAI' }
 String >> outputTextFile: aFileNameString [
 
 	(File named: aFileNameString) writeStreamDo: [ :stream | 

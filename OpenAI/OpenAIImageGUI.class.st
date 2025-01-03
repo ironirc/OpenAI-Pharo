@@ -19,8 +19,8 @@ Example:
 [This comment was automatically created with https://github.com/brackendev/OpenAI-Pharo]
 "
 Class {
-	#name : #OpenAIImageGUI,
-	#superclass : #SpPresenter,
+	#name : 'OpenAIImageGUI',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'sdk',
 		'textField',
@@ -28,10 +28,12 @@ Class {
 		'imageSize',
 		'textLabel'
 	],
-	#category : #'OpenAI-GUI'
+	#category : 'OpenAI-GUI',
+	#package : 'OpenAI',
+	#tag : 'GUI'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 OpenAIImageGUI class >> openWithSDK: anOpenAISDK [
 
 	| gui |
@@ -42,7 +44,7 @@ OpenAIImageGUI class >> openWithSDK: anOpenAISDK [
 	gui textField takeKeyboardFocus
 ]
 
-{ #category : #'action handling' }
+{ #category : 'action handling' }
 OpenAIImageGUI >> actionExport [
 
 	imageContainer image
@@ -60,7 +62,7 @@ OpenAIImageGUI >> actionExport [
 			]
 ]
 
-{ #category : #'action handling' }
+{ #category : 'action handling' }
 OpenAIImageGUI >> actionInspect [
 
 	imageContainer image
@@ -68,7 +70,7 @@ OpenAIImageGUI >> actionInspect [
 		ifNotNil: [ imageContainer image inspect ]
 ]
 
-{ #category : #'action handling' }
+{ #category : 'action handling' }
 OpenAIImageGUI >> actionSubmit [
 
 	textField text
@@ -76,7 +78,7 @@ OpenAIImageGUI >> actionSubmit [
 		ifNotEmpty: [ self handleInput: textField text ]
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 OpenAIImageGUI >> defaultLayout [
 
 	<spec: #default>
@@ -133,7 +135,7 @@ OpenAIImageGUI >> defaultLayout [
 		  yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OpenAIImageGUI >> handleInput: aString [
 
 	UIManager default showWaitCursorWhile: [
@@ -157,38 +159,38 @@ OpenAIImageGUI >> handleInput: aString [
 		]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIImageGUI >> imageContainer [
 
 	^ imageContainer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIImageGUI >> imageContainer: anObject [
 
 	imageContainer := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIImageGUI >> imageSize [
 
 	^ imageSize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIImageGUI >> imageSize: anObject [
 
 	imageSize := anObject
 ]
 
-{ #category : #loading }
+{ #category : 'loading' }
 OpenAIImageGUI >> initialize [
 
 	super initialize.
 	self initializeWidgets.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OpenAIImageGUI >> initializePresenters [
 
 	textLabel := self newTextLabel.
@@ -205,13 +207,13 @@ OpenAIImageGUI >> initializePresenters [
 	self focusOrder add: textField
 ]
 
-{ #category : #loading }
+{ #category : 'loading' }
 OpenAIImageGUI >> initializeWidgets [
 
 	self initializePresenters.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OpenAIImageGUI >> initializeWindow: aWindowPresenter [
 
 	aWindowPresenter
@@ -220,13 +222,13 @@ OpenAIImageGUI >> initializeWindow: aWindowPresenter [
 		title: 'OpenAI Image Creator'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIImageGUI >> layout [
 
 	^ self defaultLayout
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OpenAIImageGUI >> loadImageFromURL [
 
 	| url response image |
@@ -247,7 +249,7 @@ response := ZnClient new
 					]
 ]
 
-{ #category : #gui }
+{ #category : 'gui' }
 OpenAIImageGUI >> menuImageSize [
 
 	^ self newMenu
@@ -269,38 +271,38 @@ OpenAIImageGUI >> menuImageSize [
 		  yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OpenAIImageGUI >> newImageContainer [
 	^ SpImagePresenter new
 		extent: 800@600;
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OpenAIImageGUI >> newTextField [ 
 	^ SpTextInputFieldPresenter new
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OpenAIImageGUI >> newTextLabel [
 
 	^ SpLabelPresenter new yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIImageGUI >> sdk [
 
 	^ sdk
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIImageGUI >> sdk: anObject [
 
 	sdk := anObject
 ]
 
-{ #category : #gui }
+{ #category : 'gui' }
 OpenAIImageGUI >> showMessageDialog: aString [
 | presenter |
 	presenter := SpTextPresenter new
@@ -314,25 +316,25 @@ OpenAIImageGUI >> showMessageDialog: aString [
 		]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIImageGUI >> textField [
 
 	^ textField
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIImageGUI >> textField: anObject [
 
 	textField := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIImageGUI >> textLabel [
 
 	^ textLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIImageGUI >> textLabel: anObject [
 
 	textLabel := anObject

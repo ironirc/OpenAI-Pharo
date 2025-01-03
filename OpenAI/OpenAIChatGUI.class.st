@@ -19,8 +19,8 @@ Example:
 [This comment was automatically created with https://github.com/brackendev/OpenAI-Pharo]
 "
 Class {
-	#name : #OpenAIChatGUI,
-	#superclass : #SpPresenter,
+	#name : 'OpenAIChatGUI',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'fieldInput',
 		'fieldOutput',
@@ -30,10 +30,12 @@ Class {
 		'temperatureInput',
 		'fieldModel'
 	],
-	#category : #'OpenAI-GUI'
+	#category : 'OpenAI-GUI',
+	#package : 'OpenAI',
+	#tag : 'GUI'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 OpenAIChatGUI class >> openWithSDK: anOpenAISDK [
 
 	| gui |
@@ -43,7 +45,7 @@ OpenAIChatGUI class >> openWithSDK: anOpenAISDK [
 	gui fieldInput takeKeyboardFocus
 ]
 
-{ #category : #'action handling' }
+{ #category : 'action handling' }
 OpenAIChatGUI >> actionEvaluate [
 
 	self chatSession chats
@@ -56,7 +58,7 @@ OpenAIChatGUI >> actionEvaluate [
 			]
 ]
 
-{ #category : #'action handling' }
+{ #category : 'action handling' }
 OpenAIChatGUI >> actionExport [
 
 	self chatSession chats
@@ -72,7 +74,7 @@ OpenAIChatGUI >> actionExport [
 			]
 ]
 
-{ #category : #'action handling' }
+{ #category : 'action handling' }
 OpenAIChatGUI >> actionHelp [
 
 	self displayResponse:
@@ -83,7 +85,7 @@ OpenAIChatGUI >> actionHelp [
 		, '/usage - View API usage'
 ]
 
-{ #category : #'action handling' }
+{ #category : 'action handling' }
 OpenAIChatGUI >> actionImage: aSizeString prompt: aPromptString [
 
 	UIManager default showWaitCursorWhile: [ 
@@ -104,7 +106,7 @@ OpenAIChatGUI >> actionImage: aSizeString prompt: aPromptString [
 		]
 ]
 
-{ #category : #'action handling' }
+{ #category : 'action handling' }
 OpenAIChatGUI >> actionInspect [
 
 self chatSession chats
@@ -116,7 +118,7 @@ self chatSession chats
 			]
 ]
 
-{ #category : #'action handling' }
+{ #category : 'action handling' }
 OpenAIChatGUI >> actionSubmit [
 
 	fieldInput text
@@ -124,43 +126,43 @@ OpenAIChatGUI >> actionSubmit [
 		ifNotEmpty: [ self handleInput: fieldInput text ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatGUI >> barResponse [
 
 	^ barResponse
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatGUI >> barResponse: anObject [
 
 	barResponse := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatGUI >> barSubmit [
 
 	^ barSubmit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatGUI >> barSubmit: anObject [
 
 	barSubmit := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatGUI >> chatSession [
 
 	^ chatSession
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatGUI >> chatSession: anObject [
 
 	chatSession := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OpenAIChatGUI >> commandSystem: aString [
 
 	| t |
@@ -175,7 +177,7 @@ OpenAIChatGUI >> commandSystem: aString [
 	^ nil
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OpenAIChatGUI >> createImage: aSizeString [
 
 	self chatSession chats
@@ -191,7 +193,7 @@ OpenAIChatGUI >> createImage: aSizeString [
 			]
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 OpenAIChatGUI >> defaultLayout [
 
 	<spec: #default>
@@ -240,13 +242,13 @@ OpenAIChatGUI >> defaultLayout [
 		  yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OpenAIChatGUI >> displayAssistantResponse: aString [
 
 	self displayResponse: 'ASSISTANT: ' , aString.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OpenAIChatGUI >> displayResponse: aString [
 
 	fieldOutput
@@ -256,55 +258,55 @@ OpenAIChatGUI >> displayResponse: aString [
 	self scrollToEndOfText
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OpenAIChatGUI >> displaySystemResponse: aString [
 
 	self displayResponse: 'SYSTEM: ' , aString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OpenAIChatGUI >> displayUserResponse: aString [
 
 	self displayResponse: 'YOU: ' , aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatGUI >> fieldInput [
 
 	^ fieldInput
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatGUI >> fieldInput: anObject [
 
 	fieldInput := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatGUI >> fieldModel [
 
 	^ fieldModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatGUI >> fieldModel: anObject [
 
 	fieldModel := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatGUI >> fieldOutput [
 
 	^ fieldOutput
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatGUI >> fieldOutput: anObject [
 
 	fieldOutput := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OpenAIChatGUI >> handleInput: aString [
 
 	UIManager default showWaitCursorWhile: [
@@ -339,7 +341,7 @@ OpenAIChatGUI >> handleInput: aString [
 		]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OpenAIChatGUI >> initializePresenters [
 
 	fieldOutput := self newText
@@ -426,7 +428,7 @@ OpenAIChatGUI >> initializePresenters [
 	self focusOrder add: fieldInput
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OpenAIChatGUI >> initializeWindow: aWindowPresenter [
 
 	aWindowPresenter
@@ -435,13 +437,13 @@ OpenAIChatGUI >> initializeWindow: aWindowPresenter [
 		title: 'OpenAI Chat'
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 OpenAIChatGUI >> layout [
 
 	^ self defaultLayout
 ]
 
-{ #category : #gui }
+{ #category : 'gui' }
 OpenAIChatGUI >> menuClear [
 
 	"TODO"
@@ -464,7 +466,7 @@ OpenAIChatGUI >> menuClear [
 		  yourself
 ]
 
-{ #category : #gui }
+{ #category : 'gui' }
 OpenAIChatGUI >> menuImage [
 
 	^ self newMenu
@@ -486,19 +488,19 @@ OpenAIChatGUI >> menuImage [
 		  yourself
 ]
 
-{ #category : #'scrollbar managing' }
+{ #category : 'scrollbar managing' }
 OpenAIChatGUI >> scrollToEndOfText [
 
 	fieldOutput adapter widget scrollToEndOfText
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatGUI >> temperatureInput [
 
 	^ temperatureInput
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatGUI >> temperatureInput: anObject [
 
 	temperatureInput := anObject

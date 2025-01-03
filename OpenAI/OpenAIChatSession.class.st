@@ -20,24 +20,26 @@ Example:
 [This comment was automatically created with https://github.com/brackendev/OpenAI-Pharo]
 "
 Class {
-	#name : #OpenAIChatSession,
-	#superclass : #Object,
+	#name : 'OpenAIChatSession',
+	#superclass : 'Object',
 	#instVars : [
 		'sdk',
 		'chats',
 		'model',
 		'temperature'
 	],
-	#category : #'OpenAI-Core'
+	#category : 'OpenAI-Core',
+	#package : 'OpenAI',
+	#tag : 'Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OpenAIChatSession class >> startWithSDK: anOpenAISDK [
 
 	^ self startWithSDK: anOpenAISDK model: nil  temperature: nil.
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OpenAIChatSession class >> startWithSDK: anOpenAISDK model: aModelString temperature: aTemperatureFloat [
 
 	| c |
@@ -51,61 +53,61 @@ OpenAIChatSession class >> startWithSDK: anOpenAISDK model: aModelString tempera
 	^ c
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 OpenAIChatSession >> addChat: aChatObject [
 
 	chats add: aChatObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatSession >> chats [
 
 	^ chats
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatSession >> chats: anObject [
 
 	chats := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OpenAIChatSession >> initialize [
 
 	chats := OrderedCollection new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatSession >> lastChat [
 
 	^ self chats last
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatSession >> model [
 
 	^ model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatSession >> model: anObject [
 
 	model := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatSession >> sdk [
 
 	^ sdk
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatSession >> sdk: anObject [
 
 	sdk := anObject
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 OpenAIChatSession >> submitPrompt: aPromptString role: aRoleString [
 
 	| chat response assistantChat |
@@ -123,25 +125,44 @@ OpenAIChatSession >> submitPrompt: aPromptString role: aRoleString [
 	self addChat: assistantChat
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
+OpenAIChatSession >> submitPrompt: aPromptString role: aRoleString functions: functions [
+
+	| chat response assistantChat |
+	chat := OpenAISDKChat
+		        createWithRole: aRoleString
+		        content: aPromptString.
+	self addChat: chat.
+
+	response := sdk
+		            createChatCompletionWithMessages: chats
+		            model: model
+		            temperature: temperature
+		            functions: functions.
+
+	assistantChat := response choices first message.
+	self addChat: assistantChat
+]
+
+{ #category : 'adding' }
 OpenAIChatSession >> submitSystemPrompt: aPromptString [
 
 	self submitPrompt: aPromptString role: 'system'
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 OpenAIChatSession >> submitUserPrompt: aPromptString [
 
 	self submitPrompt: aPromptString role: 'user'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatSession >> temperature [
 
 	^ temperature 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OpenAIChatSession >> temperature: anObject [
 
 	temperature := anObject
